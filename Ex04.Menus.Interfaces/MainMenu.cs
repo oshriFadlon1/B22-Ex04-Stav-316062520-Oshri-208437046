@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    internal class MainMenu
+    public class MainMenu : IShowMenu
     {
+        private List<MenuItem> m_MenuItems = new List<MenuItem>();
+
+
+        public void Show()
+        {
+            Console.WriteLine("done");
+        }
     }
 }
