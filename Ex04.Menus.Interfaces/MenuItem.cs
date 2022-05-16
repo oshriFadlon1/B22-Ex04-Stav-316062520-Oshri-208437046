@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    internal class MenuItem
+    public class MenuItem
     {
         private string m_ItemName;
         private List<MenuItem> m_MenuItems = new List<MenuItem>();
@@ -20,6 +20,6 @@ namespace Ex04.Menus.Interfaces
         {
             m_MenuItems.Remove(i_MenuItem);
         }
-
+        // print second nemu 
     }
 }
