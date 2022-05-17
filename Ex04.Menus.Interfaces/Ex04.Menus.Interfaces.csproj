@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IShowMenu.cs" />
+    <Compile Include="ItemBuilder.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="MenuItem.cs" />
   </ItemGroup>

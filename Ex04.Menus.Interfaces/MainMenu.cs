@@ -20,29 +20,30 @@ namespace Ex04.Menus.Interfaces
         public void Show()
         {
             bool userChooseExit = false;
-         
             do
             {
                 PrintMainMenu();
                 try
                 {
+                    Console.WriteLine("Enter your request: ");
                     int userChoice = int.Parse(Console.ReadLine());
-                    if(userChoice == 0)
+                    if (userChoice == 0)
                     {
                         userChooseExit = true;
                     }
                     else
                     {
-                        m_MenuItems[userChoice - 1].Show(); //fix it
+                        m_MenuItems[userChoice - 1].PrintUserChoice(); //fix it
                     }
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("Something was wrong. Let's try again: ");
                 }
-            } while (!userChooseExit) ;
-
+            }
+            while (!userChooseExit);
         }
+
         // print main menu
         public void PrintMainMenu()
         {
@@ -55,7 +56,5 @@ namespace Ex04.Menus.Interfaces
             Console.WriteLine("0 - > Exit");
             Console.WriteLine("----------------------");
         }
-
-  
     }
 }
