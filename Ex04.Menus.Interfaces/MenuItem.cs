@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    public class MenuItem : IShowMenu
+    public class MenuItem : IShow
     {
         private string m_ItemName;
-        private List<MenuItem> m_MenuItems = new List<MenuItem>();
+        private List<MenuItem> m_MenuItems;
         //private List<IShowMenu> m_ShowMenus;// = new List<IShowMenu>();
-        private IShowMenu m_ShowOperation;
+        private IShow m_ShowOperation;
+
 
         public MenuItem(string i_ItemName)
         {
             m_ItemName = i_ItemName;
+            m_MenuItems = new List<MenuItem>();
+            m_ShowOperation = null;
         }
 
         public string ItemName
@@ -30,12 +33,20 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
+        public IShow ShowOperation
+        {
+            get { return m_ShowOperation; }
+            set { m_ShowOperation = value; } 
+        }
+
+      
+
         public void AddItemsToListMenuItems(MenuItem i_MenuItem)
         {
             m_MenuItems.Add(i_MenuItem);
         }
 
-        public void RemoveItemsToListMenuItems(MenuItem i_MenuItem)
+        public void RemoveItemsFromListMenuItems(MenuItem i_MenuItem)
         {
             m_MenuItems.Remove(i_MenuItem);
         }
@@ -43,7 +54,7 @@ namespace Ex04.Menus.Interfaces
 
         public void PrintItemMenu()
         {
-            Console.WriteLine(m_ItemName);
+            Console.WriteLine("**{0}**",m_ItemName);
             Console.WriteLine("----------------------");
             for (int i = 0; i < m_MenuItems.Count; i++)
             {
@@ -91,5 +102,10 @@ namespace Ex04.Menus.Interfaces
             }
             while (!userChooseBack);
         }
+
+        //public void ShowOperation()
+        //{
+        //    m_ShowOperation.Show();
+        //}
     }
 }

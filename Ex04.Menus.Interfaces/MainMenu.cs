@@ -3,10 +3,19 @@ using System.Collections.Generic;
 
 namespace Ex04.Menus.Interfaces
 {
-    public class MainMenu : IShowMenu
+    public class MainMenu : IShow
     {
         private List<MenuItem> m_MenuItems = new List<MenuItem>();
 
+        public MainMenu()
+        {
+            InitMainMenu();
+        }
+
+        private void InitMainMenu()
+        {
+            ItemBuilder.InitMenu(m_MenuItems);
+        }
         public void AddItemsToListMenuItems(MenuItem i_MenuItem)
         {
             m_MenuItems.Add(i_MenuItem);
@@ -47,7 +56,7 @@ namespace Ex04.Menus.Interfaces
         // print main menu
         public void PrintMainMenu()
         {
-            Console.WriteLine("**Interface MainMenu**");
+            Console.WriteLine("**Interface Main Menu**");
             Console.WriteLine("----------------------");
             for(int i = 0; i < m_MenuItems.Count; i++)
             {
