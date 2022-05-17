@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ex04.Menus.Delegates
+namespace Ex04.Menus.Interfaces
 {
-    public class MenuItem
+    public class ItemBuilder
     {
 
+
+        private void ShowTime();
     }
+
+
 }
