@@ -13,7 +13,6 @@ namespace Ex04.Menus.Interfaces
         //private List<IShowMenu> m_ShowMenus;// = new List<IShowMenu>();
         private IShow m_ShowOperation;
 
-
         public MenuItem(string i_ItemName)
         {
             m_ItemName = i_ItemName;
@@ -23,23 +22,29 @@ namespace Ex04.Menus.Interfaces
 
         public string ItemName
         {
-            get 
+            get
             {
                 return m_ItemName;
             }
-            set 
+
+            set
             {
-                m_ItemName = value; 
+                m_ItemName = value;
             }
         }
 
         public IShow ShowOperation
         {
-            get { return m_ShowOperation; }
-            set { m_ShowOperation = value; } 
-        }
+            get
+            {
+                return m_ShowOperation;
+            }
 
-      
+            set
+            {
+                m_ShowOperation = value;
+            }
+        }
 
         public void AddItemsToListMenuItems(MenuItem i_MenuItem)
         {
