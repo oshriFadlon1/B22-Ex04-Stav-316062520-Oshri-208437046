@@ -11,7 +11,7 @@ namespace Ex04.Menus.Interfaces
         private string m_ItemName;
         private List<MenuItem> m_MenuItems;
         //private List<IShowMenu> m_ShowMenus;// = new List<IShowMenu>();
-        private IShow m_ShowOperation;
+        private IListener m_ShowOperation;
 
         public MenuItem(string i_ItemName)
         {
@@ -33,7 +33,7 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-        public IShow ShowOperation
+        public IListener ShowOperation
         {
             get
             {
@@ -55,7 +55,6 @@ namespace Ex04.Menus.Interfaces
         {
             m_MenuItems.Remove(i_MenuItem);
         }
-        // print second menu
 
         public void PrintItemMenu()
         {
@@ -77,7 +76,7 @@ namespace Ex04.Menus.Interfaces
             }
             else
             {
-                m_ShowOperation.Show();
+                m_ShowOperation.Invoke();
             }
         }
 
