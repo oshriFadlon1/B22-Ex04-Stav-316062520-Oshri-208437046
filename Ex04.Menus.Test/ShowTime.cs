@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex04.Menus.Test
 {
     using Ex04.Menus.Interfaces;
 
-    public class ShowTime : IListener
+    public class ShowTime : ILeafMethod
     {
         public static void ShowCurrentTime()
         {
-            Console.WriteLine("The time is: {0}:{1}", DateTime.Now.Hour.ToString(), DateTime.Now.Minute.ToString());
+            Console.WriteLine("The time is: {0}", DateTime.Now.ToString("HH:mm"));
         }
 
-        void IListener.Invoke()
+        void ILeafMethod.InvokeMethod()
         {
             ShowCurrentTime();
         }

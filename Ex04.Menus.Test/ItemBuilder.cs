@@ -1,35 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ex04.Menus.Test
+﻿namespace Ex04.Menus.Test
 {
-    using Ex04.Menus.Interfaces;
+    using Ex04.Menus;
 
     public class ItemBuilder
     {
-        public static void InitMenu(MainMenu io_MainMenu)
+        public static void InitMenuInterface(Interfaces.MainMenu io_MainMenu)
         {
-            MenuItem dateMenuItem = new MenuItem("Show Date");
-            dateMenuItem.ShowOperation = new ShowDate();
+            Interfaces.MenuItem dateMenuItem = new Interfaces.MenuItem("Show Date");
+            dateMenuItem.LeafMethod = new ShowDate();
 
-            MenuItem timeMenuItem = new MenuItem("Show Time");
-            timeMenuItem.ShowOperation = new ShowTime();
+            Interfaces.MenuItem timeMenuItem = new Interfaces.MenuItem("Show Time");
+            timeMenuItem.LeafMethod = new ShowTime();
 
-            MenuItem option1MainItem = new MenuItem("Show Date/Time");
+            Interfaces.MenuItem option1MainItem = new Interfaces.MenuItem("Show Date/Time");
 
             option1MainItem.AddItemsToListMenuItems(dateMenuItem);
             option1MainItem.AddItemsToListMenuItems(timeMenuItem);
 
-            MenuItem spacesMenuItem = new MenuItem("Count Spaces");
-            spacesMenuItem.ShowOperation = new CountSpaces();
+            Interfaces.MenuItem spacesMenuItem = new Interfaces.MenuItem("Count Spaces");
+            spacesMenuItem.LeafMethod = new CountSpaces();
 
-            MenuItem versionMenuItem = new MenuItem("Show Version");
-            versionMenuItem.ShowOperation = new ShowVersion();
+            Interfaces.MenuItem versionMenuItem = new Interfaces.MenuItem("Show Version");
+            versionMenuItem.LeafMethod = new ShowVersion();
 
-            MenuItem option2MainItem = new MenuItem("Version and Spaces");
+            Interfaces.MenuItem option2MainItem = new Interfaces.MenuItem("Version and Spaces");
+            option2MainItem.AddItemsToListMenuItems(spacesMenuItem);
+            option2MainItem.AddItemsToListMenuItems(versionMenuItem);
+
+            io_MainMenu.AddItemsToListMenuItems(option1MainItem);
+            io_MainMenu.AddItemsToListMenuItems(option2MainItem);
+        }
+
+        public static void InitMenuDelegate(Delegates.MainMenu io_MainMenu)
+        {
+            Delegates.MenuItem dateMenuItem = new Delegates.MenuItem("Show Date");
+            dateMenuItem.m_GotLeafMethod += new Delegates.LeafMethod(ShowDate.ShowCurrentDate);
+
+            Delegates.MenuItem timeMenuItem = new Delegates.MenuItem("Show Time");
+            timeMenuItem.m_GotLeafMethod += new Delegates.LeafMethod(ShowTime.ShowCurrentTime);
+
+            Delegates.MenuItem option1MainItem = new Delegates.MenuItem("Show Date/Time");
+
+            option1MainItem.AddItemsToListMenuItems(dateMenuItem);
+            option1MainItem.AddItemsToListMenuItems(timeMenuItem);
+
+            Delegates.MenuItem spacesMenuItem = new Delegates.MenuItem("Count Spaces");
+            spacesMenuItem.m_GotLeafMethod += new Delegates.LeafMethod(CountSpaces.CountSpacesInString);
+
+            Delegates.MenuItem versionMenuItem = new Delegates.MenuItem("Show Version");
+            versionMenuItem.m_GotLeafMethod += new Delegates.LeafMethod(ShowVersion.ShowCurrentVersion);
+
+            Delegates.MenuItem option2MainItem = new Delegates.MenuItem("Version and Spaces");
             option2MainItem.AddItemsToListMenuItems(spacesMenuItem);
             option2MainItem.AddItemsToListMenuItems(versionMenuItem);
 

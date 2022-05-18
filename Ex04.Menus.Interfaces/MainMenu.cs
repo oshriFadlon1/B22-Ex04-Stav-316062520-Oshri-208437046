@@ -38,12 +38,13 @@ namespace Ex04.Menus.Interfaces
                     }
                     else
                     {
-                        m_MenuItems[userChoice - 1].PrintUserChoice(); //fix it
+                        m_MenuItems[userChoice - 1].PrintUserChoice();
                     }
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("Something was wrong. Let's try again: ");
+                    System.Threading.Thread.Sleep(1500);
                 }
             }
             while (!userChooseExit);
@@ -52,12 +53,14 @@ namespace Ex04.Menus.Interfaces
         // print main menu
         public void PrintMainMenu()
         {
+            Console.Clear();
             Console.WriteLine("**Interface Main Menu**");
             Console.WriteLine("----------------------");
-            for(int i = 0; i < m_MenuItems.Count; i++)
+            for (int i = 0; i < m_MenuItems.Count; i++)
             {
-                Console.WriteLine("{0} -> {1}", i+1 ,m_MenuItems[i].ItemName);
+                Console.WriteLine("{0} -> {1}", i + 1, m_MenuItems[i].ItemName);
             }
+
             Console.WriteLine("0 - > Exit");
             Console.WriteLine("----------------------");
         }
