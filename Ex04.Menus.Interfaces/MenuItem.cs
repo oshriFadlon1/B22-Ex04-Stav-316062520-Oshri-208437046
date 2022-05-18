@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
@@ -10,14 +7,13 @@ namespace Ex04.Menus.Interfaces
     {
         private string m_ItemName;
         private List<MenuItem> m_MenuItems;
-        //private List<IShowMenu> m_ShowMenus;// = new List<IShowMenu>();
-        private IListener m_ShowOperation;
+        private ILeafMethod m_LeafMethod;
 
         public MenuItem(string i_ItemName)
         {
             m_ItemName = i_ItemName;
             m_MenuItems = new List<MenuItem>();
-            m_ShowOperation = null;
+            m_LeafMethod = null;
         }
 
         public string ItemName
@@ -33,16 +29,16 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-        public IListener ShowOperation
+        public ILeafMethod LeafMethod
         {
             get
             {
-                return m_ShowOperation;
+                return m_LeafMethod;
             }
 
             set
             {
-                m_ShowOperation = value;
+                m_LeafMethod = value;
             }
         }
 
@@ -58,25 +54,29 @@ namespace Ex04.Menus.Interfaces
 
         public void PrintItemMenu()
         {
-            Console.WriteLine("**{0}**",m_ItemName);
+            Console.Clear();
+            Console.WriteLine("**{0}**", m_ItemName);
             Console.WriteLine("----------------------");
+
             for (int i = 0; i < m_MenuItems.Count; i++)
             {
                 Console.WriteLine("{0} -> {1}", i + 1, m_MenuItems[i].ItemName);
             }
+
             Console.WriteLine("0 - > Back");
             Console.WriteLine("----------------------");
         }
 
         public void PrintUserChoice()
         {
-            if(m_MenuItems.Count > 0)
+            if (m_MenuItems.Count > 0) // check if the list is empty
             {
                 Show();
             }
             else
             {
-                m_ShowOperation.Invoke();
+                m_LeafMethod.InvokeMethod();
+                System.Threading.Thread.Sleep(2000);
             }
         }
 
@@ -96,20 +96,16 @@ namespace Ex04.Menus.Interfaces
                     }
                     else
                     {
-                        m_MenuItems[userChoice - 1].PrintUserChoice(); //fix it
+                        m_MenuItems[userChoice - 1].PrintUserChoice();
                     }
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("Something was wrong. Let's try again: ");
+                    System.Threading.Thread.Sleep(1500);
                 }
             }
             while (!userChooseBack);
         }
-
-        //public void ShowOperation()
-        //{
-        //    m_ShowOperation.Show();
-        //}
     }
 }

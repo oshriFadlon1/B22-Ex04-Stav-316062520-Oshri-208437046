@@ -1,23 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex04.Menus.Test
 {
     using Ex04.Menus.Interfaces;
 
-    public class ShowVersion : IListener
+    public class ShowVersion : ILeafMethod
     {
         public static void ShowCurrentVersion()
         {
-            OperatingSystem os = Environment.OSVersion;
-            Version ver = os.Version;
-            Console.WriteLine("Version: {0} ", ver);
+            Console.WriteLine("Version: 22.2.4.8950");
         }
 
-        void IListener.Invoke()
+        void ILeafMethod.InvokeMethod()
         {
             ShowCurrentVersion();
         }

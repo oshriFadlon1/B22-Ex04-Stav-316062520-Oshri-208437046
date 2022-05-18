@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex04.Menus.Test
 {
     using Ex04.Menus.Interfaces;
 
-    public class CountSpaces : IListener
+    public class CountSpaces : ILeafMethod
     {
         public static void CountSpacesInString()
         {
@@ -27,7 +23,7 @@ namespace Ex04.Menus.Test
             Console.WriteLine("There are {0} Spaces in your sentence.", countSpaces);
         }
 
-        void IListener.Invoke()
+        void ILeafMethod.InvokeMethod()
         {
             CountSpacesInString();
         }

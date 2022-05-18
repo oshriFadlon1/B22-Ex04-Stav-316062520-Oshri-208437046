@@ -44,7 +44,7 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IListener.cs" />
+    <Compile Include="ILeafMethod.cs" />
     <Compile Include="IShow.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="MenuItem.cs" />
